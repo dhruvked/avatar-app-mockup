@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
+import Screen1 from './components/Screen1';
+import Screen2 from './components/Screen2';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState(1);
@@ -13,34 +15,10 @@ function App() {
   };
 
   if (currentScreen === 1) {
-    return (
-      <div className="App">
-        <div className="container">
-          <h1>Celebrity Avatar</h1>
-          <div className="video-placeholder">
-            <p>Video Playing Here</p>
-          </div>
-          <button onClick={goToScreen2} className="talk-button">
-            Talk to Celebrity X
-          </button>
-        </div>
-      </div>
-    );
+    return <Screen1 onTalkClick={goToScreen2} />;
   }
 
-  return (
-    <div className="App">
-      <div className="container">
-        <h1>Talking with Celebrity X</h1>
-        <div className="avatar-interface">
-          <p>Avatar listening/responding interface</p>
-          <button onClick={goToScreen1} className="back-button">
-            Back to Video
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+  return <Screen2 onBackClick={goToScreen1} />;
 }
 
 export default App;
